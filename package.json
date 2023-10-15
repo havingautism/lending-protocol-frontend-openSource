@@ -11,14 +11,21 @@
   "dependencies": {
     "@ant-design/pro-components": "^2.6.30",
     "@next/font": "13.1.6",
+    "@rainbow-me/rainbowkit": "^1.1.1",
     "antd": "^5.10.0",
+    "encoding": "^0.1.13",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
+    "lodash.merge": "^4.6.2",
+    "lokijs": "1.x",
     "next": "13.1.6",
     "next-themes": "^0.2.1",
+    "pino-pretty": "^10.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-modal-video": "^2.0.0"
+    "react-modal-video": "^2.0.0",
+    "viem": "^1.16.5",
+    "wagmi": "^1.4.3"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",

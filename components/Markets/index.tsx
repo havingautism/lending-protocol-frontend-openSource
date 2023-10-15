@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ProTable } from "@ant-design/pro-components";
 import { tableColumns, tableData } from "./TableColumns";
 import { useTheme } from "next-themes";
@@ -7,6 +7,8 @@ import { Button, ConfigProvider, Dropdown, Spin, theme } from "antd";
 
 const Markets = () => {
   const [isLoading, setIsloading] = useState(false);
+  const [data, setData] = useState(tableData);
+  const actionRef = useRef();
   const darkThemeConfig = {
     token: {
       colorPrimary: "white",
@@ -40,26 +42,30 @@ const Markets = () => {
             columns={tableColumns}
             cardBordered
             size="large"
+            actionRef={actionRef}
             key={"marketsTable"}
             id="marketsTable"
-            request={(params, sorter, filter) => {
-              return Promise.resolve({
-                data: tableData,
-                success: true,
-              });
-            }}
+            dataSource={data}
             rowKey="key"
             search={false}
             toolbar={{
               search: {
                 placeholder: "",
                 onSearch: (value: string) => {
-                  alert(value);
+                  let dataTemp = [];
+                  tableData.map((item) => {
+                    const assetName = item.asset.toLowerCase().toString();
+                    if (assetName.includes(value.toLowerCase().toString())) {
+                      dataTemp.push(item);
+                    }
+                  });
+                  setData(dataTemp);
                 },
               },
             }}
             pagination={false}
             headerTitle="Markets"
+            options={{ reload: false, density: false, setting: false }}
           />
         </ConfigProvider>
       </div>

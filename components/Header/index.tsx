@@ -4,14 +4,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
-
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 const Header = () => {
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
   };
-  const currentPage = location.pathname;
+  const currentPage = location?.pathname;
 
   // Sticky Navbar
   const [sticky, setSticky] = useState(false);
@@ -158,12 +158,14 @@ const Header = () => {
                 </nav>
               </div>
               <div className="flex items-center justify-end pr-16 lg:pr-0">
-                <Link
+                {/* <Link
                   href="/signup"
                   className="ease-in-up hidden rounded-md bg-primary px-8 py-3 text-base font-bold text-white transition duration-300 hover:bg-opacity-90 hover:shadow-signUp md:block md:px-9 lg:px-6 xl:px-9"
                 >
                   Connect
-                </Link>
+                </Link> */}
+
+                <ConnectButton accountStatus="address" />
                 <div>
                   <ThemeToggler />
                 </div>
