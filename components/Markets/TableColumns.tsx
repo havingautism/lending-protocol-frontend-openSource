@@ -7,9 +7,6 @@ export const tableColumns = [
   {
     title: "Asset",
     dataIndex: "asset",
-    //copyable: true,
-    //ellipsis: true,
-    //tip: "标题过长会自动收缩",
   },
   {
     title: "Total supplied",

@@ -11,6 +11,7 @@ const Header = () => {
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
   };
+  const currentPage = location.pathname;
 
   // Sticky Navbar
   const [sticky, setSticky] = useState(false);
@@ -103,7 +104,14 @@ const Header = () => {
                 >
                   <ul className="block lg:flex lg:space-x-12">
                     {menuData.map((menuItem, index) => (
-                      <li key={menuItem.id} className="group relative">
+                      <li
+                        key={menuItem.id}
+                        className="group relative"
+                        style={{
+                          textDecorationLine:
+                            menuItem.path == currentPage ? "underline" : "",
+                        }}
+                      >
                         {menuItem.path ? (
                           <Link
                             href={menuItem.path}
