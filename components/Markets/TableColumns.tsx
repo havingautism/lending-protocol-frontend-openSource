@@ -1,12 +1,16 @@
+import { BTC, ETH } from "./CoinLogos";
+
 export const tableColumns = [
-  {
-    dataIndex: "index",
-    valueType: "indexBorder",
-    width: 48,
-  },
   {
     title: "Asset",
     dataIndex: "asset",
+    render: (record) => (
+      <div style={{ display: "flex" }}>
+        {record.toString() == "BTC" && <BTC width={23} />}
+        {record.toString() == "ETH" && <ETH width={23} />}
+        <p style={{ paddingLeft: "6px" }}>{record}</p>
+      </div>
+    ),
   },
   {
     title: "Total supplied",
